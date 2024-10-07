@@ -1,0 +1,44 @@
+{%load static%}
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="/static/css/room.css">
+    <title>{{ chat_room.name }}</title>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var roomId = {{ chat_room.id }};
+            var ws = new WebSocket('ws://' + window.location.host + '/ws/chat/' + roomId + '/');
+
+            ws.onmessage = function(event) {
+                var data = JSON.parse(event.data);
+                var messageContainer = document.getElementById('messages');
+                var messageElement = document.createElement('p');
+                messageElement.innerHTML = '<strong>' + data.username + ':</strong> ' + data.message + ' <em>' + data.timestamp + '</em>';
+                messageContainer.appendChild(messageElement);
+                messageContainer.scrollTop = messageContainer.scrollHeight;
+            };
+
+            document.getElementById('message-form').onsubmit = function(event) {
+                event.preventDefault();
+                var messageInput = document.querySelector('input[name="message"]');
+                var message = messageInput.value;
+                ws.send(JSON.stringify({'message': message}));
+                messageInput.value = '';
+            };
+        });
+    </script>
+</head>
+<body>
+    <h1>Welcome to {{ chat_room.name }}!</h1>
+    <div id="messages">
+        {% for message in messages %}
+            <p><strong>{{ message.user.username }}:</strong> {{ message.content }} <em>{{ message.timestamp }}</em></p>
+        {% endfor %}
+    </div>
+    <form id="message-form" method="post" action="">
+        {% csrf_token %}
+        <input type="text" name="message" placeholder="Type your message..." required>
+        <button type="submit">Send</button>
+    </form>
+</body>
+</html>

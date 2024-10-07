@@ -1,0 +1,19 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="/static/css/style_for_reg_info.css">
+    <title>Success registered</title>
+</head>
+<body>
+    <div class="container">
+        <div class="success-card">
+            <div class="message">
+                <h1>Registration Successful!</h1>
+                <p>You have successfully registered.</p>
+            </div>
+            <a href="{%url 'login'%}" class="btn">Back to auth</a>
+        </div>
+    </div>
+</body>
+</html>

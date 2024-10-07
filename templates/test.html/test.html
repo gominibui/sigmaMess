@@ -1,0 +1,40 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Добро пожаловать!</title>
+  <link rel="stylesheet" href="{% static 'css/css_for_test.css' %}">
+</head>
+<body>
+  <header>
+    <div class="container">
+      <div class="logo">
+        <h1>MySocial</h1>
+      </div>
+      <div class="user">
+        {% if request.user.is_authenticated %}
+          <span>Привет, {{ request.user.first_name|default:request.user.username }}!</span>
+          <a href="{% url 'logout' %}">Выйти</a>
+        {% else %}
+          <a href="{% url 'login' %}">Войти</a>
+        {% endif %}
+      </div>
+    </div>
+  </header>
+  <main>
+    <div class="container">
+      <section class="welcome">
+        <h1>Добро пожаловать!</h1>
+        <div class="chat-buttons">
+          <button id="create-chat" class="btn">Создать чат</button>
+          <button id="enter-chat" class="btn">Войти в чат</button>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <script src="{% static 'js/script.js' %}"></script>
+</body>
+</html>

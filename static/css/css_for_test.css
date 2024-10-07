@@ -1,0 +1,93 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f0f0f0;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+header .logo h1 {
+  font-size: 24px;
+  color: #333;
+}
+
+header .user {
+  font-size: 16px;
+}
+
+header .user a {
+  color: #6200ea;
+  text-decoration: none;
+  margin-left: 10px;
+  font-weight: bold;
+}
+
+main {
+  margin-top: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: calc(100vh - 150px);
+}
+
+.welcome {
+  text-align: center;
+  background-color: #fff;
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  background: linear-gradient(45deg, #7b2ff7 50%, #fff 50%);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+}
+
+.welcome h1 {
+  color: #333;
+  font-size: 36px;
+}
+
+.chat-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.chat-buttons .btn {
+  background-color: #6200ea;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 25px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.chat-buttons .btn:hover {
+  background-color: #7b2ff7;
+}
+
+.chat-buttons .btn:focus {
+  outline: none;
+}
